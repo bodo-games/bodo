@@ -17,7 +17,7 @@ canonifyurls = true # 追加(相対URLを絶対URLに変換できるようにす
   tag = "tags"
 
 [author]
-  name = "bodo-apps"
+  name = "bodoapps"
   bio = "小さなボードゲームたちが集まるところ"
   job = "GitHubコントリビューター"
   location = "Japan"
