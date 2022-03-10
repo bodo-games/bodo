@@ -68,4 +68,4 @@ canonifyurls = true # 追加(相対URLを絶対URLに変換できるようにす
   identifier = "github"
   name = "GitHub"
   pre = "<i class=\"sidebar-button-icon fab fa-lg fa-github\" aria-hidden=\"true\"></i>"
-  url = "https://bodo-apps.github.io/bodo"
+  url = "https://github.com/bodo-apps/bodo"
