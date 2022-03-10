@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Banana Docs</title>
+    <title>Home on bodo (ボード)</title>
     <link>https://bodo-apps.github.io/bodo/tags/home/</link>
-    <description>Recent content in Home on Banana Docs</description>
+    <description>Recent content in Home on bodo (ボード)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Fri, 04 Mar 2022 21:00:00 +0900</lastBuildDate><atom:link href="https://bodo-apps.github.io/bodo/tags/home/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>bodo 開発チーム</title>
+      <title>目次</title>
       <link>https://bodo-apps.github.io/bodo/docs/hello/</link>
       <pubDate>Fri, 04 Mar 2022 21:00:00 +0900</pubDate>
       
       <guid>https://bodo-apps.github.io/bodo/docs/hello/</guid>
-      <description>開発者ページへようこそ
-お読みいただきありがとうございます
-目次          bodo Flutterコードの説明です   開発チーム 作成中のページです        </description>
+      <description>         bodoについて 初めての方はこちらから   ソースコード設計 Flutterコードの説明です   開発チーム 作成中のページです   アプリ利用規約 アプリの利用規約です        </description>
     </item>
     
   </channel>

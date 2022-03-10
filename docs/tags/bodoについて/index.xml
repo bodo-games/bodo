@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Users on bodo (ボード)</title>
-    <link>https://bodo-apps.github.io/bodo/users/</link>
-    <description>Recent content in Users on bodo (ボード)</description>
+    <title>bodoについて on bodo (ボード)</title>
+    <link>https://bodo-apps.github.io/bodo/tags/bodo%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/</link>
+    <description>Recent content in bodoについて on bodo (ボード)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language><atom:link href="https://bodo-apps.github.io/bodo/users/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language><atom:link href="https://bodo-apps.github.io/bodo/tags/bodo%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bodoについて</title>
       <link>https://bodo-apps.github.io/bodo/users/welcome/</link>
@@ -18,16 +18,6 @@
 現在はまだ開発中ですが、より多くの人のアイデアを世界中に届けられるように頑張っていますので、応援の方よろしくお願いします
 また協力してくれる方も募集中です。気軽にお声がけください。
  ゲーム企画・アイデア イラスト BGM作成 プログラミング  </description>
-    </item>
-    
-    <item>
-      <title>利用規約</title>
-      <link>https://bodo-apps.github.io/bodo/users/terns_of_services/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://bodo-apps.github.io/bodo/users/terns_of_services/</guid>
-      <description>このアプリは作成中です。
-利用規約は作成中です。</description>
     </item>
     
   </channel>

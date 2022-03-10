@@ -1,7 +1,7 @@
 baseURL = "https://bodo-apps.github.io/bodo"
 languageCode = 'ja'
 defaultContentLanguage = 'ja'
-title = 'Banana Docs'
+title = 'bodo (ボード)'
 theme = 'hugo-tranquilpeak-theme'
 publishDir = "../docs"
 canonifyurls = true # 追加(相対URLを絶対URLに変換できるようにする)
