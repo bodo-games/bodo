@@ -57,4 +57,4 @@ $ flutter pub run flutter_native_splash:create
 
 - ドキュメントの更新
 
-https://bodo-apps.github.io/bodo/docs_edit/README.md
+https://github.com/bodo-apps/bodo/blob/main/docs_edit/README.md
