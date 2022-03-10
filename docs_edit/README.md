@@ -1,7 +1,5 @@
 https://bodo-apps.github.io/bodo/docs/hello
 
-<img src="https://github.com/bodo-apps/bodo/blob/main/resources/images/bodo-header.png">
-
 # Hugo をインストール (e.g. macOS brew)
 
 ```
