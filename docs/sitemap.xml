@@ -2,43 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://rbdog.github.io/banana_app/banana_app/root/</loc>
+    <loc>https://bodo-apps.github.io/bodo/bodo/root/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/banana_app/assets/</loc>
+    <loc>https://bodo-apps.github.io/bodo/bodo/assets/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/banana_app/lib/</loc>
+    <loc>https://bodo-apps.github.io/bodo/bodo/lib/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/banana_app/lib/components/</loc>
+    <loc>https://bodo-apps.github.io/bodo/bodo/lib/components/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/banana_app/lib/pages/</loc>
+    <loc>https://bodo-apps.github.io/bodo/bodo/lib/pages/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/banana_app/lib/state/</loc>
+    <loc>https://bodo-apps.github.io/bodo/bodo/lib/state/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/docs/hello/</loc>
+    <loc>https://bodo-apps.github.io/bodo/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/</loc>
+    <loc>https://bodo-apps.github.io/bodo/docs/hello/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/banana_app/</loc>
+    <loc>https://bodo-apps.github.io/bodo/bodo/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/tags/code/</loc>
+    <loc>https://bodo-apps.github.io/bodo/tags/code/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/docs/</loc>
+    <loc>https://bodo-apps.github.io/bodo/docs/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/tags/home/</loc>
+    <loc>https://bodo-apps.github.io/bodo/tags/home/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://rbdog.github.io/banana_app/tags/</loc>
+    <loc>https://bodo-apps.github.io/bodo/tags/</loc>
     <lastmod>2022-03-04T21:00:00+09:00</lastmod>
   </url>
 </urlset>

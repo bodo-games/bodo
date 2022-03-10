@@ -1,5 +1,5 @@
 ---
-title: "Banana Developers"
+title: "bodo 開発チーム"
 date: 2022-03-04T21:00:00+09:00
 draft: false
 tags:
@@ -18,6 +18,6 @@ showActions: false
 
 | <img width="20%"/> | <img width="1000"/> |
 | --- | --- |
-| [banana_app](../../banana_app/root) | Flutterコードの説明です |
+| [bodo](../../bodo/root) | Flutterコードの説明です |
 | 開発チーム | 作成中のページです |
 |||
