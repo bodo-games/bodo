@@ -23,3 +23,6 @@ showActions: false
 - イラスト
 - BGM作成
 - プログラミング
+
+twitter (ツイッター)  
+[Rubydog725](https://twitter.com/rubydog725)
