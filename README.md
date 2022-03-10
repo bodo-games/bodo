@@ -1,4 +1,4 @@
-# bodo
+# bodo (ボード)
 
 https://bodo-apps.github.io/bodo/docs/hello/
 
