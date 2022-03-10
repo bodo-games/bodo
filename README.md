@@ -1,4 +1,6 @@
-# サンプル App
+# bodo
+
+https://bodo-apps.github.io/bodo/docs/hello/
 
 ## Flutter で カジノアプリを作るサンプル
 
