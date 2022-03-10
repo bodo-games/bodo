@@ -11,11 +11,20 @@ $ brew install hugo
 # 新しい記事を書くとき
 
 ```
-$ hugo new pages/xxx_yyy/page.md
+$ hugo new xxx/xxx.md
 ```
 
-xxx に数字
-yyy に適当なタイトル
+---
+title: "ここにタイトル"
+date: 2020-00-00T00:00:00+09:00
+draft: false
+tags:
+  - ここにタグ
+  - ここにタグ
+comments: false
+showMeta: true
+showActions: false
+---
 
 # ローカルで動かしてみる
 

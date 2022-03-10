@@ -17,8 +17,8 @@ canonifyurls = true # 追加(相対URLを絶対URLに変換できるようにす
   tag = "tags"
 
 [author]
-  name = "banana"
-  bio = "flutterプロジェクト例"
+  name = "bodo-apps"
+  bio = "小さなボードゲームたちが集まるところ"
   job = "GitHubコントリビューター"
   location = "Japan"
   picture = "images/team.png" # themes/static/
@@ -56,6 +56,12 @@ canonifyurls = true # 追加(相対URLを絶対URLに変換できるようにす
   name = "bodo"
   pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
   url = "/bodo/root/"
+[[menu.main]]
+  weight = 4
+  identifier = "users"
+  name = "users"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-pen-nib\" aria-hidden=\"true\"></i>"
+  url = "/users/"
 
 [[menu.links]]
   weight = 1
