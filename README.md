@@ -55,9 +55,6 @@ $ flutter pub run flutter_launcher_icons:main
 $ flutter pub run flutter_native_splash:create
 ```
 
-<br>
+- ドキュメントの更新
 
-## ~~詳しくはこちらから！~~
-
-https://casino-plus.github.io/
-注意: 作成中のページです
+https://bodo-apps.github.io/bodo/docs_edit/README.md
