@@ -1,0 +1,7 @@
+//
+//
+//
+
+enum LoadingTask {
+  apiNetworking,
+}
