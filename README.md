@@ -8,8 +8,7 @@ https://bodo-apps.github.io/bodo/docs/hello/
 ## メインで開発している人の Twitter
 
 - ルビードッグ(@Rubydog725)
-  https://twitter.com/Rubydog725
+  - https://twitter.com/Rubydog725
 
 - ドキュメントの更新
-
-https://github.com/bodo-apps/bodo/blob/main/docs_edit/README.md
+  - https://github.com/bodo-apps/bodo/blob/main/docs_edit/README.md
