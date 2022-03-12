@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sample_app/components/chip_counter.dart';
 import 'package:sample_app/components/game_picker.dart';
-import 'package:sample_app/state/game_page_host.dart';
 
 class GameList extends HookConsumerWidget {
   @override
@@ -22,17 +21,11 @@ class GameList extends HookConsumerWidget {
             child: GamePicker(
               onPickedGame: (gameId) {
                 debugPrint('選択中のゲームが変更されました');
-                final newState = GamePageHostState(pickedGameId: gameId);
-                ref.read(gamePageHostState.notifier).update(newState);
               },
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              final state = ref.read(gamePageHostState);
-              Navigator.of(context)
-                  .pushGameOfflinePage(gameId: state.pickedGameId!);
-            },
+            onPressed: () {},
             child: const Text('Play'),
           ),
         ],

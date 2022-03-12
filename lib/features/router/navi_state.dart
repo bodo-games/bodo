@@ -22,7 +22,7 @@ final baseNaviState = StateNotifierProvider<_Notifier, NaviState>((ref) {
   // 初期化
   const initialState = NaviState(
     stack: [
-      PageId.splash,
+      PageId.start,
     ],
   );
   return _Notifier(initialState);

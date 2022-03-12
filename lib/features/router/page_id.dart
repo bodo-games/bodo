@@ -3,6 +3,7 @@
 //
 
 enum PageId {
+  start,
   splash,
   onboarding,
   rollDice,
@@ -11,10 +12,12 @@ enum PageId {
   profile,
   gameList,
   slotList,
-  gamePageHost,
   slotSpin,
   developerMessage,
   license,
   termsOfService,
   debug,
+  roomCreate,
+  roomShare,
+  workspace,
 }

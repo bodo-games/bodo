@@ -19,7 +19,7 @@ class SampleApp extends HookConsumerWidget {
     final naviState = ref.watch(baseNaviState);
 
     return MaterialApp(
-      title: 'Casino+',
+      title: 'bodo (ボード)',
       theme: colorTheme(),
       debugShowCheckedModeBanner: false,
       home: NaviWindow(
