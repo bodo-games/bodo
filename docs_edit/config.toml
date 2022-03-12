@@ -18,10 +18,10 @@ canonifyurls = true # 追加(相対URLを絶対URLに変換できるようにす
 
 [author]
   name = "bodoapps"
-  bio = "小さなボードゲームたちが集まるところ"
+  bio = "オンラインで完全に自由なボードゲーム"
   job = "GitHubコントリビューター"
   location = "Japan"
-  picture = "images/team.png" # themes/static/
+  picture = "images/bodo-apps.png" # themes/static/
 
 [params]
   sidebarBehavior = 2
