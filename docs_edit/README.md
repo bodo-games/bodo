@@ -42,4 +42,4 @@ docs フォルダが生成される
 
 # 開発チームのアイコン
 
-- themes/hugo-tranquilpeak-theme/static/images/team.png
+- themes/hugo-tranquilpeak-theme/static/images/bodo-apps.png
