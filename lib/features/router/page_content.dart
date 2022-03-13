@@ -14,8 +14,6 @@ import 'package:sample_app/pages/onboarding/onboarding.dart';
 import 'package:sample_app/pages/profile/profile.dart';
 import 'package:sample_app/pages/receive_drink/receive_drink.dart';
 import 'package:sample_app/pages/roll_dice/roll_dice.dart';
-import 'package:sample_app/pages/room_create/room_create.dart';
-import 'package:sample_app/pages/room_share/room_share.dart';
 import 'package:sample_app/pages/slot_list/slot_list.dart';
 import 'package:sample_app/pages/slot_spin/slot_spin.dart';
 import 'package:sample_app/pages/splash/splash.dart';
@@ -60,10 +58,6 @@ class PageContent extends HookConsumerWidget {
         return TermsOfService();
       case PageId.debug:
         return Debug();
-      case PageId.roomCreate:
-        return RoomCreate();
-      case PageId.roomShare:
-        return RoomShare();
       case PageId.workspace:
         return Workspace();
     }

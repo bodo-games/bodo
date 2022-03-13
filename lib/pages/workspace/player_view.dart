@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:sample_app/components/url_image.dart';
-import 'package:sample_app/config/image_names.dart';
-import 'package:sample_app/features/router/page_id.dart';
-import 'package:sample_app/features/router/router.dart';
-import 'package:sample_app/pages/splash/splash_controller.dart';
 
 class PlayerView extends HookConsumerWidget {
   const PlayerView();
@@ -17,26 +12,18 @@ class PlayerView extends HookConsumerWidget {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         debugPrint('シェアコンテンツ画面で一度だけ実行します');
       });
+      return null;
     }, const []);
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF555555),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 600,
-              child: Image.asset('images/bodo-header.png'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(router).pushBaseNavi(PageId.roomCreate);
-              },
-              child: Text('Start'),
-            ),
-          ],
-        ),
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(color: Colors.white10),
+      child: Row(
+        children: [
+          Text('アイコン'),
+          Text('表示名'),
+        ],
       ),
     );
   }

@@ -6,9 +6,10 @@ import 'package:sample_app/config/image_names.dart';
 import 'package:sample_app/features/router/page_id.dart';
 import 'package:sample_app/features/router/router.dart';
 import 'package:sample_app/pages/splash/splash_controller.dart';
+import 'package:sample_app/pages/workspace/object_action_menu.dart';
 
-class ObjectAction extends HookConsumerWidget {
-  const ObjectAction();
+class MenuBar extends HookConsumerWidget {
+  const MenuBar();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,25 +20,18 @@ class ObjectAction extends HookConsumerWidget {
       });
     }, const []);
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF555555),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 600,
-              child: Image.asset('images/bodo-header.png'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(router).pushBaseNavi(PageId.roomCreate);
-              },
-              child: Text('Start'),
-            ),
-          ],
+    return Row(
+      children: [
+        TextButton(
+          onPressed: () {
+            final oldState = ref.read(subLayerState);
+            final newState = SubLayerState(true, oldState.showObjectActionMenu);
+            final notifer = ref.read(subLayerState.notifier);
+            notifer.update(newState);
+          },
+          child: Text('SideBoard'),
         ),
-      ),
+      ],
     );
   }
 }

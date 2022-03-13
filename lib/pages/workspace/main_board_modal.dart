@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:sample_app/components/url_image.dart';
-import 'package:sample_app/config/image_names.dart';
-import 'package:sample_app/features/router/page_id.dart';
-import 'package:sample_app/features/router/router.dart';
-import 'package:sample_app/pages/splash/splash_controller.dart';
+import 'package:sample_app/pages/workspace/object_action_menu.dart';
 
 /// メインボードに配置できるオブジェクト
 class MainBoardObject {
@@ -45,15 +41,18 @@ final mainBoardState =
 
 /// メインボードView (拡大モーダル)
 class MainBoardModal extends HookConsumerWidget {
-  MainBoardModal();
+  const MainBoardModal();
 
   /// オブジェクトView
-  Widget objectView(MainBoardObject object) {
+  Widget objectView(MainBoardObject object, WidgetRef ref) {
     return Align(
       alignment: Alignment(object.x, object.y),
       child: ElevatedButton(
         onPressed: () {
           debugPrint(object.id);
+          final oldState = ref.read(subLayerState);
+          final newState = SubLayerState(oldState.showSideBoard, true);
+          ref.read(subLayerState.notifier).update(newState);
         },
         child: Text(object.id),
       ),
@@ -67,53 +66,59 @@ class MainBoardModal extends HookConsumerWidget {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         debugPrint('シェアコンテンツ画面で一度だけ実行します');
       });
+      return null;
     }, const []);
 
     final objects = ref.watch(mainBoardState).objects;
 
-    return Scaffold(
-      backgroundColor: Colors.green,
-      body: DragTarget(
-        builder: (context, candidateData, rejectedData) {
-          // ドロップ可能なエリア
-          return Stack(
-            fit: StackFit.expand,
-            children: [
-              for (var object in objects)
-                Positioned(
-                  top: object.y,
-                  left: object.x,
-                  child: Draggable(
-                    data: object,
-                    child: objectView(object),
-                    feedback: objectView(object),
-                    childWhenDragging: Text('ドラッグ中'),
-                  ),
+    return DragTarget(
+      builder: (context, candidateData, rejectedData) {
+        // ドロップ可能なエリア
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(color: Colors.green),
+            ),
+            for (var object in objects)
+              Positioned(
+                top: object.y,
+                left: object.x,
+                child: Draggable(
+                  data: object,
+                  child: objectView(object, ref),
+                  feedback: objectView(object, ref),
+                  childWhenDragging: const SizedBox(
+                    width: 0,
+                    height: 0,
+                  ), // ドラッグ中に元の場所に表示するオブジェクト
                 ),
-            ],
+              ),
+          ],
+        );
+      },
+      onAcceptWithDetails: (DragTargetDetails details) {
+        // ドロップを受け取ったとき
+        final object = details.data;
+        if (object is MainBoardObject) {
+          // オブジェクト一覧を更新
+          // グローバル座標からローカル座標へ変換
+          final RenderBox box = context.findRenderObject() as RenderBox;
+          final localOffset = box.globalToLocal(details.offset);
+          final updatedObject = MainBoardObject(
+            object.id,
+            localOffset.dx,
+            localOffset.dy,
           );
-        },
-        onAcceptWithDetails: (DragTargetDetails details) {
-          // ドロップを受け取ったとき
-          final object = details.data;
-          if (object is MainBoardObject) {
-            // オブジェクト一覧を更新
-            // グローバル座標からローカル座標へ変換
-            final RenderBox box = context.findRenderObject() as RenderBox;
-            final localOffset = box.globalToLocal(details.offset);
-            final updatedObject = MainBoardObject(
-              object.id,
-              localOffset.dx,
-              localOffset.dy,
-            );
-            final updatedList = List.of(objects);
-            updatedList.removeWhere((obj) => obj.id == object.id);
-            updatedList.add(updatedObject);
-            final updatedState = MainBoardState(updatedList);
-            ref.read(mainBoardState.notifier).update(updatedState);
-          }
-        },
-      ),
+          final updatedList = List.of(objects);
+          updatedList.removeWhere((obj) => obj.id == object.id);
+          updatedList.add(updatedObject);
+          final updatedState = MainBoardState(updatedList);
+          ref.read(mainBoardState.notifier).update(updatedState);
+        }
+      },
     );
   }
 }

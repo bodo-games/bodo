@@ -19,25 +19,6 @@ class MainBoard extends HookConsumerWidget {
       });
     }, const []);
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF555555),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 600,
-              child: Image.asset('images/bodo-header.png'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(router).pushBaseNavi(PageId.roomCreate);
-              },
-              child: Text('Start'),
-            ),
-          ],
-        ),
-      ),
-    );
+    return Text('Main Borad Small');
   }
 }

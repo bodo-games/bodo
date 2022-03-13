@@ -6,12 +6,36 @@ import 'package:sample_app/config/image_names.dart';
 import 'package:sample_app/features/router/page_id.dart';
 import 'package:sample_app/features/router/router.dart';
 import 'package:sample_app/pages/splash/splash_controller.dart';
-import 'package:sample_app/pages/workspace/object_action_menu.dart';
-
 import 'package:sample_app/pages/workspace/side_board.dart';
 
-class SideBoard extends HookConsumerWidget {
-  const SideBoard();
+/// サブレイヤーの状態
+class SubLayerState {
+  final bool showSideBoard;
+  final bool showObjectActionMenu;
+  SubLayerState(this.showSideBoard, this.showObjectActionMenu);
+}
+
+/// バインド
+class _Notifier extends StateNotifier<SubLayerState> {
+  _Notifier(SubLayerState state) : super(state);
+  update(SubLayerState state) {
+    this.state = state;
+  }
+}
+
+/// 公開
+final subLayerState =
+    StateNotifierProvider.autoDispose<_Notifier, SubLayerState>((ref) {
+  // 初期化
+  final initialState = SubLayerState(
+    false,
+    false,
+  );
+  return _Notifier(initialState);
+});
+
+class ObjectActionMenu extends HookConsumerWidget {
+  const ObjectActionMenu();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,7 +51,7 @@ class SideBoard extends HookConsumerWidget {
     return Stack(
       children: [
         // バリア barrier
-        (state.showSideBoard)
+        (state.showObjectActionMenu)
             ? GestureDetector(
                 onTap: () {
                   final oldState = ref.read(subLayerState);
@@ -35,7 +59,7 @@ class SideBoard extends HookConsumerWidget {
                   ref.read(subLayerState.notifier).update(newState);
                 },
                 child: Container(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withOpacity(0.0),
                 ),
               )
             : const SizedBox(
@@ -43,18 +67,20 @@ class SideBoard extends HookConsumerWidget {
               ),
         // 前面
         // オブジェクトアクションメニュー
-        state.showSideBoard
-            ? Container(
-                width: 300,
-                height: double.infinity,
-                color: Colors.green,
-                child: Column(
-                  children: [
-                    Text('サイドボード'),
-                    Text('Action1'),
-                    Text('Action2'),
-                    Text('Action3'),
-                  ],
+        state.showObjectActionMenu
+            ? Center(
+                child: Container(
+                  width: 400,
+                  height: 500,
+                  color: Colors.white.withOpacity(0.5),
+                  child: Column(
+                    children: [
+                      Text('オブジェクトアクションメニュー'),
+                      Text('Action1'),
+                      Text('Action2'),
+                      Text('Action3'),
+                    ],
+                  ),
                 ),
               )
             : SizedBox(width: 0),

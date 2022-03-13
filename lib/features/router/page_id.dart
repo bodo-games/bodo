@@ -17,7 +17,5 @@ enum PageId {
   license,
   termsOfService,
   debug,
-  roomCreate,
-  roomShare,
   workspace,
 }

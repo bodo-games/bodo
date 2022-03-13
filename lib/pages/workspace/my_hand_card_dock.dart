@@ -19,15 +19,20 @@ class MyHandCardDock extends HookConsumerWidget {
       });
     }, const []);
 
-    return Row(
-      children: [
-        Text('A'),
-        Text('B'),
-        Text('C'),
-        Text('D'),
-        Text('E'),
-        Text('F'),
-      ],
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(color: Colors.white24),
+      child: Row(
+        children: [
+          Text('A'),
+          Text('B'),
+          Text('C'),
+          Text('D'),
+          Text('E'),
+          Text('F'),
+        ],
+      ),
     );
   }
 }
