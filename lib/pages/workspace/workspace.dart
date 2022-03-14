@@ -25,6 +25,8 @@ class Workspace extends HookConsumerWidget {
       });
     }, const []);
 
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: const Color(0xFF555555),
       body: Stack(
@@ -95,10 +97,14 @@ class Workspace extends HookConsumerWidget {
             ],
           ),
           // サブレイヤー
-          Expanded(
+          Container(
+            width: screenSize.width,
+            height: screenSize.height,
             child: SideBoard(),
           ),
-          Expanded(
+          Container(
+            width: screenSize.width,
+            height: screenSize.height,
             child: ObjectActionMenu(),
           ),
         ],

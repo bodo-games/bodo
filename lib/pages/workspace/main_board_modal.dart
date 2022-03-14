@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sample_app/pages/workspace/object_action_menu.dart';
+import 'package:sample_app/pages/workspace/side_board.dart';
 
 /// メインボードに配置できるオブジェクト
 class MainBoardObject {
   String id;
   double x;
   double y;
-  MainBoardObject(this.id, this.x, this.y);
+  double width;
+  double height;
+  MainBoardObject(this.id, this.x, this.y, this.width, this.height);
 }
 
 /// メインボードの状態
@@ -31,9 +34,9 @@ final mainBoardState =
   // 初期化
   final initialState = MainBoardState(
     [
-      MainBoardObject('test1', 0, 0),
-      MainBoardObject('test2', 50, 50),
-      MainBoardObject('test3', 200, 200),
+      MainBoardObject('test1', 0, 0, 120, 40),
+      MainBoardObject('test2', 50, 50, 120, 40),
+      MainBoardObject('test3', 200, 200, 120, 40),
     ],
   );
   return _Notifier(initialState);
@@ -44,15 +47,21 @@ class MainBoardModal extends HookConsumerWidget {
   const MainBoardModal();
 
   /// オブジェクトView
-  Widget objectView(MainBoardObject object, WidgetRef ref) {
-    return Align(
-      alignment: Alignment(object.x, object.y),
-      child: ElevatedButton(
-        onPressed: () {
-          debugPrint(object.id);
-          final oldState = ref.read(subLayerState);
-          final newState = SubLayerState(oldState.showSideBoard, true);
-          ref.read(subLayerState.notifier).update(newState);
+  Widget objectView(
+      MainBoardObject object, BuildContext context, WidgetRef ref) {
+    return Container(
+      width: object.width,
+      height: object.height,
+      child: GestureDetector(
+        onTap: () {
+          debugPrint('タップされました ${object.id}');
+          RenderBox box = context.findRenderObject() as RenderBox;
+          final localPoint = Offset(object.x, object.y);
+          final globalPoint = box.localToGlobal(localPoint);
+          final oldState = ref.read(objectActionMenuState);
+          final newState =
+              ObjectActionMenuState(object, globalPoint.dx, globalPoint.dy);
+          ref.read(objectActionMenuState.notifier).update(newState);
         },
         child: Text(object.id),
       ),
@@ -88,8 +97,8 @@ class MainBoardModal extends HookConsumerWidget {
                 left: object.x,
                 child: Draggable(
                   data: object,
-                  child: objectView(object, ref),
-                  feedback: objectView(object, ref),
+                  child: objectView(object, context, ref),
+                  feedback: objectView(object, context, ref),
                   childWhenDragging: const SizedBox(
                     width: 0,
                     height: 0,
@@ -111,6 +120,8 @@ class MainBoardModal extends HookConsumerWidget {
             object.id,
             localOffset.dx,
             localOffset.dy,
+            object.width,
+            object.height,
           );
           final updatedList = List.of(objects);
           updatedList.removeWhere((obj) => obj.id == object.id);

@@ -6,36 +6,70 @@ import 'package:sample_app/config/image_names.dart';
 import 'package:sample_app/features/router/page_id.dart';
 import 'package:sample_app/features/router/router.dart';
 import 'package:sample_app/pages/splash/splash_controller.dart';
+import 'package:sample_app/pages/workspace/main_board_modal.dart';
 import 'package:sample_app/pages/workspace/side_board.dart';
+import 'package:sample_app/utils/popup_rect.dart';
 
-/// サブレイヤーの状態
-class SubLayerState {
-  final bool showSideBoard;
-  final bool showObjectActionMenu;
-  SubLayerState(this.showSideBoard, this.showObjectActionMenu);
+/// オブジェクトアクションメニューの状態
+class ObjectActionMenuState {
+  final MainBoardObject object;
+  final double objectGlobalX;
+  final double objectGlobalY;
+  ObjectActionMenuState(this.object, this.objectGlobalX, this.objectGlobalY);
 }
 
 /// バインド
-class _Notifier extends StateNotifier<SubLayerState> {
-  _Notifier(SubLayerState state) : super(state);
-  update(SubLayerState state) {
+class _Notifier extends StateNotifier<ObjectActionMenuState?> {
+  _Notifier(ObjectActionMenuState? state) : super(state);
+  update(ObjectActionMenuState? state) {
     this.state = state;
   }
 }
 
 /// 公開
-final subLayerState =
-    StateNotifierProvider.autoDispose<_Notifier, SubLayerState>((ref) {
+final objectActionMenuState =
+    StateNotifierProvider.autoDispose<_Notifier, ObjectActionMenuState?>((ref) {
   // 初期化
-  final initialState = SubLayerState(
-    false,
-    false,
-  );
-  return _Notifier(initialState);
+  return _Notifier(null);
 });
 
 class ObjectActionMenu extends HookConsumerWidget {
   const ObjectActionMenu();
+
+  Widget positionedMenu(BuildContext context, WidgetRef ref) {
+    final state = ref.read(objectActionMenuState);
+    final anchorX = state!.objectGlobalX + state.object.width / 2;
+    final anchorY = state.objectGlobalY + state.object.height / 2;
+    final screenSize = MediaQuery.of(context).size;
+    // ポップアップの位置と大きさを計算
+    final rect = popupRect(
+      anchorX,
+      anchorY,
+      300,
+      300,
+      screenSize.width,
+      screenSize.height,
+    );
+    return Positioned(
+      top: rect.top,
+      left: rect.left,
+      width: rect.width,
+      height: rect.height,
+      child: Container(
+        width: 400,
+        height: 500,
+        color: Colors.white.withOpacity(0.5),
+        child: Column(
+          children: [
+            Text('オブジェクトアクションメニュー'),
+            Text('Action1'),
+            Text('Action2'),
+            Text('Action3'),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -46,17 +80,16 @@ class ObjectActionMenu extends HookConsumerWidget {
       });
     }, const []);
 
-    final state = ref.watch(subLayerState);
+    final state = ref.watch(objectActionMenuState);
 
     return Stack(
       children: [
         // バリア barrier
-        (state.showObjectActionMenu)
+        (state != null)
             ? GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: () {
-                  final oldState = ref.read(subLayerState);
-                  final newState = SubLayerState(false, false);
-                  ref.read(subLayerState.notifier).update(newState);
+                  ref.read(objectActionMenuState.notifier).update(null);
                 },
                 child: Container(
                   color: Colors.black.withOpacity(0.0),
@@ -67,23 +100,7 @@ class ObjectActionMenu extends HookConsumerWidget {
               ),
         // 前面
         // オブジェクトアクションメニュー
-        state.showObjectActionMenu
-            ? Center(
-                child: Container(
-                  width: 400,
-                  height: 500,
-                  color: Colors.white.withOpacity(0.5),
-                  child: Column(
-                    children: [
-                      Text('オブジェクトアクションメニュー'),
-                      Text('Action1'),
-                      Text('Action2'),
-                      Text('Action3'),
-                    ],
-                  ),
-                ),
-              )
-            : SizedBox(width: 0),
+        (state != null) ? positionedMenu(context, ref) : SizedBox(width: 0),
       ],
     );
   }

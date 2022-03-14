@@ -10,6 +10,30 @@ import 'package:sample_app/pages/workspace/object_action_menu.dart';
 
 import 'package:sample_app/pages/workspace/side_board.dart';
 
+/// サブレイヤーの状態
+class SideBoardState {
+  final bool showSideBoard;
+  SideBoardState(this.showSideBoard);
+}
+
+/// バインド
+class _Notifier extends StateNotifier<SideBoardState> {
+  _Notifier(SideBoardState state) : super(state);
+  update(SideBoardState state) {
+    this.state = state;
+  }
+}
+
+/// 公開
+final sideBoardState =
+    StateNotifierProvider.autoDispose<_Notifier, SideBoardState>((ref) {
+  // 初期化
+  final initialState = SideBoardState(
+    false,
+  );
+  return _Notifier(initialState);
+});
+
 class SideBoard extends HookConsumerWidget {
   const SideBoard();
 
@@ -22,7 +46,7 @@ class SideBoard extends HookConsumerWidget {
       });
     }, const []);
 
-    final state = ref.watch(subLayerState);
+    final state = ref.watch(sideBoardState);
 
     return Stack(
       children: [
@@ -30,9 +54,9 @@ class SideBoard extends HookConsumerWidget {
         (state.showSideBoard)
             ? GestureDetector(
                 onTap: () {
-                  final oldState = ref.read(subLayerState);
-                  final newState = SubLayerState(false, false);
-                  ref.read(subLayerState.notifier).update(newState);
+                  final oldState = ref.read(sideBoardState);
+                  final newState = SideBoardState(false);
+                  ref.read(sideBoardState.notifier).update(newState);
                 },
                 child: Container(
                   color: Colors.black.withOpacity(0.5),

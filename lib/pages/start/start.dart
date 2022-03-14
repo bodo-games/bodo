@@ -21,19 +21,53 @@ class Start extends HookConsumerWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFF555555),
-      body: Center(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // メニューバー
             Container(
-              width: 600,
-              child: Image.asset('images/bodo-header.png'),
+              width: double.infinity,
+              height: 40,
+              color: Colors.black54,
             ),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(router).pushBaseNavi(PageId.workspace);
-              },
-              child: Text('Start'),
+            // メインコンテンツ
+            Container(
+              width: double.infinity,
+              height: 500,
+              color: Colors.orange,
+              child: Row(
+                children: [
+                  // 左側
+                  Container(
+                    width: 500,
+                    height: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('bodo'),
+                        Text('使い放題のオンラインボードゲームカフェ'),
+                        ElevatedButton(
+                          onPressed: () {
+                            ref.read(router).pushBaseNavi(PageId.workspace);
+                          },
+                          child: Text('Start'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // 右側
+                  Container(
+                    width: 300,
+                    height: double.infinity,
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Image.asset('images/top-image.png'),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

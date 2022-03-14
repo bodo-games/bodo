@@ -7,6 +7,7 @@ import 'package:sample_app/features/router/page_id.dart';
 import 'package:sample_app/features/router/router.dart';
 import 'package:sample_app/pages/splash/splash_controller.dart';
 import 'package:sample_app/pages/workspace/object_action_menu.dart';
+import 'package:sample_app/pages/workspace/side_board.dart';
 
 class MenuBar extends HookConsumerWidget {
   const MenuBar();
@@ -24,9 +25,9 @@ class MenuBar extends HookConsumerWidget {
       children: [
         TextButton(
           onPressed: () {
-            final oldState = ref.read(subLayerState);
-            final newState = SubLayerState(true, oldState.showObjectActionMenu);
-            final notifer = ref.read(subLayerState.notifier);
+            final oldState = ref.read(sideBoardState);
+            final newState = SideBoardState(true);
+            final notifer = ref.read(sideBoardState.notifier);
             notifer.update(newState);
           },
           child: Text('SideBoard'),
